@@ -1,0 +1,29 @@
+.bg-custom{
+    background-color: #303fcf;
+}
+.bg{
+   background-color: #f0f1f2;
+}
+.navbar .nav-item:hover .nav-link{
+    background-color: white;
+    color: #303fcf;
+    border-radius: 15px;
+}
+.back-img{
+    background-image: url("../img/bg.jpg");
+    height: 60vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: right top;
+
+}
+.text-custom{
+    color: white;
+    padding-top: 20px;
+}
+.crd-ho:hover{
+    background-color: #fcf7f7;
+}
+
+
