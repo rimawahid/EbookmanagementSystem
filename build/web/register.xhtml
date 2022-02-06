@@ -70,25 +70,25 @@
                             <h:form>
                                 <div class="form-group">
                                     <h:outputLabel for="name" value="Name"/>
-                                    <h:inputText class="form-control" id="name" value=""/>
+                                    <h:inputText class="form-control" id="name" value="#{user.name}"/>
                                 </div>
                                 <div class="form-group">
                                     <h:outputLabel for="email" value="Email address"/>
-                                    <h:inputText class="form-control" id="email" value=""/>
+                                    <h:inputText class="form-control" id="email" value="#{user.email}"/>
                                 </div>
                                 <div class="form-group">
                                     <h:outputLabel for="phone" value="Phone No"/>
-                                    <h:inputText class="form-control" id="phone" value=""/>
+                                    <h:inputText class="form-control" id="phone" value="#{user.phone}"/>
                                 </div>
                                 <div class="form-group">
                                     <h:outputLabel for="password" value="Password"/>
-                                    <h:inputText class="form-control" id="password" value=""/>
+                                    <h:inputText class="form-control" id="password" value="#{user.password}"/>
                                 </div>
                                 <div class="form-check">
                                     <h:selectBooleanCheckbox value = "Remember Me" id = "chkRememberMe" /> Check me out
                                 </div>
 
-                                <h:commandButton type="submit" class="btn btn-primary" value="Submit" action="#{user.save()}"></h:commandButton>
+                                <h:commandButton type="submit" class="btn btn-primary" value="Submit" action="#{user.register()}"></h:commandButton>
                             </h:form>
 
                         </div>
