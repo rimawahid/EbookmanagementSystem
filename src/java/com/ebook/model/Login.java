@@ -8,7 +8,7 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class Login {
 
-    String email, password;
+    String email, password, msg;
 
     public String getEmail() {
         return email;
@@ -26,21 +26,31 @@ public class Login {
         this.password = password;
     }
 
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+    
+
     public String loginAction() {
        
        boolean result = new UserDAO().login(email, password);
        
        
         if (result) {
-            System.out.println("success");
+           // System.out.println("success");
             return "home";
             
         }else if(email.equals("admin@gmail.com") && password.equals("1234")){
-            System.out.println("failed");
+            //System.out.println("failed");
             return "admin/home";
         }else {
-            System.out.println("failed");
-            return "index";
+            setMsg("Email & Password Invalid");
+            //System.out.println("failed");
+            return "login";
         }
         //return "index";
     }
