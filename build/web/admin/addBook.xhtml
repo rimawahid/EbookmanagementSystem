@@ -44,27 +44,27 @@
                             <h:form enctype="multipart/form-data">
                                 <div class="form-group">
                                     <h:outputLabel for="bookName" value="Book Name"/>
-                                    <h:inputText class="form-control" id="bookName" value="" required="true"/>
+                                    <h:inputText class="form-control" id="bookName" value="#{book.bookName}" />
                                 </div>
 
                                 <div class="form-group">
                                     <h:outputLabel for="authorName" value="Author Name"/>
-                                    <h:inputText class="form-control" id="authorName" value="" required="true"/>
+                                    <h:inputText class="form-control" id="authorName" value="#{book.author}" />
                                 </div>
                                 <div class="form-group">
                                     <h:outputLabel for="price" value="Price"/>
-                                    <h:inputText class="form-control" id="price" value="" required="true"/>
+                                    <h:inputText class="form-control" id="price" value="#{book.price}"/>
                                 </div>
                                 <div class="form-group">
                                     <h:outputLabel for="bookCategory" value="Book Categories"/>
-                                    <h:selectOneMenu class="form-control" id="bookCategory" value="">
+                                    <h:selectOneMenu class="form-control" id="bookCategory" value="#{book.bookCategory}">
                                         <f:selectItem itemValue="--select--" itemLabel="--select--"/>
                                         <f:selectItem itemValue="New Book" itemLabel="New Book"/>
 
                                     </h:selectOneMenu>                                </div>
                                 <div class="form-group">
                                     <h:outputLabel for="bookStatus" value="Book Status"/>
-                                    <h:selectOneMenu class="form-control" id="bookStatus" value="">
+                                    <h:selectOneMenu class="form-control" id="bookStatus" value="#{book.status}">
                                         <f:selectItem itemValue="--select--" itemLabel="--select--"/>
                                         <f:selectItem itemValue="Active" itemLabel="Active"/>
                                         <f:selectItem itemValue="Inactive" itemLabel="Inactive"/> 
@@ -72,11 +72,11 @@
                                 </div>
                                 <div class="form-group">
                                     <h:outputLabel for="photo" value="Upload Photo"/>
-                                    <h:inputFile class="form-control" id="photo" value="" required="true"/>
+                                    <h:inputFile class="form-control" id="photo" value="#{book.file}" />
                                 </div>
 
                                 <div class="text-center">
-                                    <h:commandButton type="submit" class="btn btn-primary" value="Add" ></h:commandButton> <br/>
+                                    <h:commandButton type="submit" class="btn btn-primary" value="Add"  action="#{book.addBook()}"></h:commandButton> <br/>
                                 </div>
                             </h:form>
                         </div>
