@@ -111,5 +111,34 @@ public class Book {
         //img = "img/" + fileName;
         img = "/book/" + fileName; 
         new BookDAO().save(this);
+        clear();
+    }
+    
+    public void clear(){
+        setBookName ("");
+        setAuthor("");
+        setBookCategory("");
+        setStatus("");
+        setPrice(0.0);
+        setImg("");
+    }
+    
+    public String beforeUpadate(Book b){
+        setId(b.id);
+        System.out.println(b.id);
+        setBookName (b.bookName);
+        setAuthor(b.author);
+        setBookCategory(b.bookCategory);
+        setStatus(b.status);
+        setPrice(b.price);
+        setImg(b.img);
+        return "edit_books";
+    } 
+    public void updateBook(){
+        new BookDAO().update(this);
+    }
+    
+    public void deleteBook(){
+        new BookDAO().delete(this);
     }
 }

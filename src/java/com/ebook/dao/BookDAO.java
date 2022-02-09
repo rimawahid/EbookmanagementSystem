@@ -56,12 +56,43 @@ public class BookDAO implements ICommonInterface<Book> {
 
     @Override
     public int update(Book t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "update book_dtls set book_name= ?, author =?, price =?, book_category=?, status=?, photo =?, email=? where id = ?";
+        int status = 0;
+        try {
+            con = DBConnection.getConnect();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, t.getBookName());
+            ps.setString(2, t.getAuthor());
+            ps.setDouble(3, t.getPrice());
+            ps.setString(4, t.getBookCategory());
+            ps.setString(5, t.getStatus());
+            ps.setString(6, t.getImg());
+            ps.setString(7, t.getEmail());
+            ps.setInt(8, t.getId());
+            System.out.println("DAO" + t.getBookName());
+            ps.executeUpdate();
+             System.out.println("DAO prifh" +  t.getPrice());
+        } catch (Exception e) {
+            e.printStackTrace();
+            
+        }
+        return status;
     }
 
     @Override
     public int delete(Book t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "delete from book_dtls where id =?";
+        int status = 0;
+        try {
+            con = DBConnection.getConnect();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, t.getId());
+            System.out.println(t.getId());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return status;
     }
 
     @Override

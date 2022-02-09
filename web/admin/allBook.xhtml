@@ -50,41 +50,42 @@
                 <h2 class="p-2"><h:outputText value="Hello Admin"/></h2>
             </center>
 
-            <h:dataTable value="#{bookDAO.getAll()}" var="book" class="table table-striped table-hover table-bordered" >
+            <h:dataTable value="#{bookDAO.getAll()}" var="bookt" class="table table-striped table-hover table-bordered" >
                 <h:column>
                     <f:facet name="header">ID</f:facet>
-                    <h:outputText  value="#{book.id}"/>
+                    <h:outputText  value="#{bookt.id}"/>
                 </h:column> 
                 <h:column>
                     <f:facet name="header">Image</f:facet>
-                    <h:graphicImage class="img" url="#{book.img}"/>
+                    <h:graphicImage class="img" url="#{bookt.img}"/>
 
                 </h:column>
                 <h:column>
                     <f:facet name="header">Book Name</f:facet>
-                    <h:outputText value="#{book.bookName}"/>
+                    <h:outputText value="#{bookt.bookName}"/>
                 </h:column> 
                 <h:column>
                     <f:facet name="header">Author Name</f:facet>
-                    <h:outputText value="#{book.author}"/>
+                    <h:outputText value="#{bookt.author}"/>
                 </h:column> 
                 <h:column>
                     <f:facet name="header">Price</f:facet>
-                    <h:outputText value="#{book.price}"/>
+                    <h:outputText value="#{bookt.price}"/>
                 </h:column> 
                 <h:column>
                     <f:facet name="header">Book Categories</f:facet>
-                    <h:outputText value="#{book.bookCategory}"/>
+                    <h:outputText value="#{bookt.bookCategory}"/>
                 </h:column> 
                 <h:column>
                     <f:facet name="header">Status</f:facet>
-                    <h:outputText value="#{book.status}"/>
+                    <h:outputText value="#{bookt.status}"/>
                 </h:column> 
                 <h:column> 
                     <f:facet name="header">Action</f:facet>
-                    <h:commandButton action = "#{userDAO.edit(u.id)}" value="Edit" class="btn btn-primary"> 
+                   
+                    <h:commandButton action = "#{book.beforeUpadate(bookt)}" value="Edit" class="btn btn-primary "> 
                     </h:commandButton>
-                    <h:commandButton action = "#{userDAO.delete(u.id)}" value="Delete" class="btn btn-danger"> 
+                    <h:commandButton action = "#{book.deleteBook()}" value="Delete" class="btn btn-danger ml-1"> 
                     </h:commandButton>
                 </h:column>
 
