@@ -41,7 +41,7 @@ public class BookDAO implements ICommonInterface<Book> {
             ps.setString(4, t.getBookCategory());
             ps.setString(5, t.getStatus());
             ps.setString(6, t.getImg());
-            ps.setString(7, t.getEmail());
+            ps.setString(7,"Admin");
             //System.out.println(t.getName());
             ps.executeUpdate();
         } catch (Exception e) {
@@ -137,19 +137,19 @@ public class BookDAO implements ICommonInterface<Book> {
         return books;
     }
     
-     public List<Book> newBook(Book t) {
-        String sql = "select * from book_dtls  book_category=?, status=?";
+     public List<Book> newBook() {
+        String sql = "select * from book_dtls where  book_category=? and status=? LIMIT 4";
         ArrayList<Book> newbooks = new ArrayList<Book>();
         try {
             con = DBConnection.getConnect();
             ps = con.prepareStatement(sql);
-            ps.setString(1, "new");
+            ps.setString(1, "New Book");
             ps.setString(2, "Active");
-            System.out.println("HEllo");
+           
             rs = ps.executeQuery();
             
             int i =1;
-            while (rs.next() && i<= 4) {
+            while (rs.next() ) {
                 Book showBook = new Book();
                 System.out.println(rs.getString("book_name"));
                 showBook.setBookName(rs.getString("book_name"));
@@ -160,6 +160,48 @@ public class BookDAO implements ICommonInterface<Book> {
                 showBook.setImg(rs.getString("photo"));
                 showBook.setEmail(rs.getString("email"));
                 showBook.setId(rs.getInt("id"));
+                
+                newbooks.add(showBook);
+                i++;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.close();
+                ps.close();
+                rs.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return newbooks;
+    }
+     
+     public List<Book> newAllBook() {
+        String sql = "select * from book_dtls where  book_category=? and status=? LIMIT 100 OFFSET 4";
+        ArrayList<Book> newbooks = new ArrayList<Book>();
+        try {
+            con = DBConnection.getConnect();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, "New Book");
+            ps.setString(2, "Active");
+            System.out.println("HEllo");
+            rs = ps.executeQuery();
+            
+            int i =1;
+            while (rs.next() ) {
+                Book showBook = new Book();
+                System.out.println(rs.getString("book_name"));
+                showBook.setBookName(rs.getString("book_name"));
+                showBook.setAuthor(rs.getString("author"));
+                showBook.setPrice(rs.getDouble("price"));
+                showBook.setBookCategory(rs.getString("book_category"));
+                showBook.setStatus(rs.getString("status"));
+                showBook.setImg(rs.getString("photo"));
+                showBook.setEmail(rs.getString("email"));
+                showBook.setId(rs.getInt("id"));
+                
                 newbooks.add(showBook);
                 i++;
             }
