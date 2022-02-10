@@ -36,6 +36,7 @@ public class UserDAO implements ICommonInterface<User> {
     }
     
     public boolean login(String email, String password){
+        
 //        boolean f =false;
         String sql = "select * from user where email =? and password =?";
         try {
@@ -43,8 +44,10 @@ public class UserDAO implements ICommonInterface<User> {
             ps = con.prepareStatement(sql);
             ps.setString(1, email);
             ps.setString(2, password);
-            System.out.println(email);
-            System.out.println(password);
+//            ps.setString(3, name);
+          
+            //System.out.println(email);
+            //System.out.println(password);
             rs = ps.executeQuery();
             if(rs.next()){
                 return true;

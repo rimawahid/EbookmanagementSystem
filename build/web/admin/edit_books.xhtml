@@ -17,6 +17,16 @@
                 <div class="col-md-3 text-success">
                     <h3> <i class="fas fa-book"></i>Ebooks</h3>
                 </div>
+                <div class="col-md-6">
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+                        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <a href="login.xhtml" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>Login</a>
+                    <a href="register.xhtml" class="btn btn-primary"> <i class="fas fa-user-plus"></i>Register</a>
+                </div>
             </div>
         </div>
         <!--nav bar start -->
@@ -44,6 +54,8 @@
                             <h:form enctype="multipart/form-data">
                                 <div class="form-group">
                                     <h:outputLabel for="bookName" value="Book Name"/>
+                                    <h:inputHidden class="form-control" id="id" value="#{book.id}" />
+                                   
                                     <h:inputText class="form-control" id="bookName" value="#{book.bookName}" />
                                 </div>
 
@@ -76,7 +88,7 @@
                                 </div>
 
                                 <div class="text-center">
-                                    <h:commandButton type="submit" class="btn btn-primary" value="Add"  action="#{book.updateBook()}"></h:commandButton> <br/>
+                                    <h:commandButton type="submit" class="btn btn-primary" value="Update"  action="#{book.updateBook(book)}"></h:commandButton> <br/>
                                 </div>
                             </h:form>
                         </div>

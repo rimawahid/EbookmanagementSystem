@@ -56,7 +56,7 @@ public class BookDAO implements ICommonInterface<Book> {
 
     @Override
     public int update(Book t) {
-        String sql = "update book_dtls set book_name= ?, author =?, price =?, book_category=?, status=?, photo =?, email=? where id = ?";
+        String sql = "update book_dtls set book_name= ?, author =?, price =?, book_category=?, status=?,  email=? where id = ?";
         int status = 0;
         try {
             con = DBConnection.getConnect();
@@ -66,12 +66,12 @@ public class BookDAO implements ICommonInterface<Book> {
             ps.setDouble(3, t.getPrice());
             ps.setString(4, t.getBookCategory());
             ps.setString(5, t.getStatus());
-            ps.setString(6, t.getImg());
-            ps.setString(7, t.getEmail());
-            ps.setInt(8, t.getId());
-            System.out.println("DAO" + t.getBookName());
+            //ps.setString(6, t.getImg());
+            ps.setString(6, t.getEmail());
+            ps.setInt(7, t.getId());
+           // System.out.println("DAO" + t.getBookName());
             ps.executeUpdate();
-             System.out.println("DAO prifh" +  t.getPrice());
+            // System.out.println("DAO prifh" +  t.getPrice());
         } catch (Exception e) {
             e.printStackTrace();
             
@@ -135,6 +135,46 @@ public class BookDAO implements ICommonInterface<Book> {
             }
         }
         return books;
+    }
+    
+     public List<Book> newBook(Book t) {
+        String sql = "select * from book_dtls  book_category=?, status=?";
+        ArrayList<Book> newbooks = new ArrayList<Book>();
+        try {
+            con = DBConnection.getConnect();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, "new");
+            ps.setString(2, "Active");
+            System.out.println("HEllo");
+            rs = ps.executeQuery();
+            
+            int i =1;
+            while (rs.next() && i<= 4) {
+                Book showBook = new Book();
+                System.out.println(rs.getString("book_name"));
+                showBook.setBookName(rs.getString("book_name"));
+                showBook.setAuthor(rs.getString("author"));
+                showBook.setPrice(rs.getDouble("price"));
+                showBook.setBookCategory(rs.getString("book_category"));
+                showBook.setStatus(rs.getString("status"));
+                showBook.setImg(rs.getString("photo"));
+                showBook.setEmail(rs.getString("email"));
+                showBook.setId(rs.getInt("id"));
+                newbooks.add(showBook);
+                i++;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.close();
+                ps.close();
+                rs.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return newbooks;
     }
 
 }

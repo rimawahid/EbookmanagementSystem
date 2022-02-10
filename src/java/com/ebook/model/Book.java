@@ -102,6 +102,7 @@ public class Book {
     }
 
     
+    
 
     public void addBook() throws IOException {
         String fileName = Paths.get(file.getSubmittedFileName()).getFileName().toString();
@@ -134,11 +135,12 @@ public class Book {
         setImg(b.img);
         return "edit_books";
     } 
-    public void updateBook(){
-        new BookDAO().update(this);
+    public String updateBook(Book book){
+        new BookDAO().update(book);
+        return "allBook";
     }
     
-    public void deleteBook(){
-        new BookDAO().delete(this);
+    public void deleteBook(Book book){
+        new BookDAO().delete(book);
     }
 }

@@ -26,8 +26,48 @@
                 <div class="col-md-3 text-success">
                     <h3> <i class="fas fa-book"></i>Ebooks</h3>
                 </div>
+                <div class="col-md-6">
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+                        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <f:view>
+                        <h:form>
+                              <h:outputText class="btn btn-success"  value="#{login.name}"/>
+                            <a  data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary text-white"> <i class="fas fa-sign-out-alt"></i>Logout</a>
+                        </h:form>
+                    </f:view>
+
+                </div>
             </div>
         </div>
+
+        <!-- Modal start -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <h4>Do you want logout</h4>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/login.xhtml" type="button" class="btn btn-primary text-white">Logout</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal end -->
         <!--nav bar start -->
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-custom">
@@ -85,7 +125,7 @@
                    
                     <h:commandButton action = "#{book.beforeUpadate(bookt)}" value="Edit" class="btn btn-primary "> 
                     </h:commandButton>
-                    <h:commandButton action = "#{book.deleteBook()}" value="Delete" class="btn btn-danger ml-1"> 
+                    <h:commandButton action = "#{book.deleteBook(bookt)}" value="Delete" class="btn btn-danger ml-1"> 
                     </h:commandButton>
                 </h:column>
 
