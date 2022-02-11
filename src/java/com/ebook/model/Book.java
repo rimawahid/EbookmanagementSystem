@@ -143,4 +143,7 @@ public class Book {
     public void deleteBook(Book book){
         new BookDAO().delete(book);
     }
+    public void getId(Book book){
+        new BookDAO().getByID(id);
+    }
 }

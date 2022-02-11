@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Ebook: Index</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
@@ -44,21 +45,20 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#"><i class="fas fa-book-open"></i> Recent Book</a>
+                        <a class="nav-link active" href="all_recent_book.xhtml"><i class="fas fa-book-open"></i> Recent Book</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active " href="#"><i class="fas fa-book-open"></i>New Book</a>
+                        <a class="nav-link active " href="all_new_book.xhtml"><i class="fas fa-book-open"></i>New Book</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="#"><i class="fas fa-book-open"></i>Old Book</a>
+                        <a class="nav-link active" href="all_old_book.xhtml"><i class="fas fa-book-open"></i>Old Book</a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
@@ -67,98 +67,27 @@
                 </form>
             </div>
         </nav>
-        <!--        Banner start-->
 
+        <!--Banner start-->
         <div class="container-flulid back-img">
             <h2 class="text-center text-custom">EBook Management System</h2>
         </div>
-        <!--        recent book start -->
+
+        <!--recent book start -->
         <div class="container" >
             <h3 class="text-center m-4">Recent Book</h3>
             <div class="row">
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img alt="" src="book/book1.jpg" style="width:150px;height: 200px; "/>
-                            <p>Java Programming</p>
-                            <p>Balgurusamy</p>
-                            <p>Categories:new</p>
-                            <div class="row ">
-                                <a href="" class="btn btn-danger btn-sm ml-2"> <i class="fas fa-cart-plus"></i>Add Cart</a>
-                                <a href="" class="btn btn-success btn-sm ml-1">view Details</a>
-                                <a href="" class="btn btn-danger btn-sm ml-1">@99</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img alt="" src="book/book1.jpg" style="width:150px;height: 200px; "/>
-                            <p>Java Programming</p>
-                            <p>Balgurusamy</p>
-                            <p>Categories:new</p>
-                            <div class="row ">
-                                <a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a>
-                                <a href="" class="btn btn-success btn-sm ml-1">view Details</a>
-                                <a href="" class="btn btn-danger btn-sm ml-1">@99</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img alt="" src="book/book1.jpg" style="width:150px;height: 200px; "/>
-                            <p>Java Programming</p>
-                            <p>Balgurusamy</p>
-                            <p>Categories:new</p>
-                            <div class="row ">
-                                <a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a>
-                                <a href="" class="btn btn-success btn-sm ml-1">view Details</a>
-                                <a href="" class="btn btn-danger btn-sm ml-1">@99</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img alt="" src="book/book1.jpg" style="width:150px;height: 200px; "/>
-                            <p>Java Programming</p>
-                            <p>Balgurusamy</p>
-                            <p>Categories:new</p>
-                            <div class="row ">
-                                <a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a>
-                                <a href="" class="btn btn-success btn-sm ml-1">view Details</a>
-                                <a href="" class="btn btn-danger btn-sm ml-1">@99</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="text-center mt-3">
-                <a href=""  class="btn btn-danger text-white"> View All</a>
-            </div>
-        </div>
-        <hr/>
-        <!--        New book start -->
-
-        <div class="container" >
-            <h3 class="text-center m-4">New Book</h3>
-            <div class="row">
-                <ui:repeat value="#{bookDAO.newBook()}" var="book" class="table table-striped table-hover table-bordered" >
+                <ui:repeat value="#{bookDAO.recentBooks()}" var="book" class="table table-striped table-hover table-bordered" >
                     <div class="col-md-3">
                         <div class="card crd-ho">
                             <div class="card-body text-center">
-                                <h:graphicImage style="width:150px;height: 200px; " class="img" url="#{book.img}"/>
+                                <h:graphicImage style="width:100px;height: 150px; " class="img" url="#{book.img}"/>
                                 <p>#{book.bookName}</p>
                                 <p>#{book.author}</p>
-                                <p>Categories: #{book.bookCategory}</p>
-                                <div class="row ">
+                                <p>Category: #{book.bookCategory}</p> 
+                                <div class="row " id="show">
                                     <a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a>
-                                    <a href="" class="btn btn-success btn-sm ml-1">view Details</a>
+                                    <a href="view_books.xhtml?id=#{book.id}" class="btn btn-success btn-sm ml-1">view Details</a>
                                     <a href="" class="btn btn-danger btn-sm ml-1">#{book.price}</a>
                                 </div>
                             </div>
@@ -166,100 +95,68 @@
                     </div>
                 </ui:repeat>
             </div>
-            <!--            view all start here-->
-            <div class="text-center mt-3 ">
-                <button  onclick ="myFunction()"  class="btn btn-danger text-white m-3"> View All</button>
+            <div class="text-center mt-3">
+                <a href="all_recent_book.xhtml"  class="btn btn-danger text-white"> View All</a>
             </div>
-
-            <div class="container">
-                <div class="row" id="showNewBook">
-                    <ui:repeat value="#{bookDAO.newAllBook()}" var="book" class="table table-striped table-hover table-bordered" >
-                        <div class="col-md-3" >
-                            <div class="card crd-ho">
-                                <div class="card-body text-center">
-                                    <h:graphicImage style="width:150px;height: 200px; " class="img" url="#{book.img}"/>
-                                    <p>#{book.bookName}</p>
-                                    <p>#{book.author}</p>
-                                    <p>Categories: #{book.bookCategory}</p>
-                                    <div class="row ">
-                                        <a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a>
-                                        <a href="" class="btn btn-success btn-sm ml-1">view Details</a>
-                                        <a href="" class="btn btn-danger btn-sm ml-1">#{book.price}</a>
-                                    </div>
+        </div>
+        <hr/>
+        <!--recent book end -->
+        <!--New book start -->
+        <div class="container" >
+            <h3 class="text-center m-4">New Book</h3>
+            <div class="row">
+                <ui:repeat value="#{bookDAO.newBook()}" var="book" class="table table-striped table-hover table-bordered" >
+                    <div class="col-md-3">
+                        <div class="card crd-ho">
+                            <div class="card-body text-center">
+                                <h:graphicImage style="width:100px;height: 150px; " class="img" url="#{book.img}"/>
+                                <p>#{book.bookName}</p>
+                                <p>#{book.author}</p>
+                                <p>Categories: #{book.bookCategory}</p>
+                                <div class="row ">
+                                    <a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a>
+                                    <a href="view_books.xhtml?id=#{book.id}" class="btn btn-success btn-sm ml-1">view Details</a>
+                                    <a href="" class="btn btn-danger btn-sm ml-1">#{book.price}</a>
                                 </div>
                             </div>
                         </div>
-                    </ui:repeat>
-                </div>
-            </div>
-            <!--            view all end here-->
-        </div>
-        <hr/>
-        <!--        Old book start -->
-        <div class="container" >
-            <h3 class="text-center m-4">Old Book</h3>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img alt="" src="book/book1.jpg" style="width:150px;height: 200px; "/>
-                            <p>Java Programming</p>
-                            <p>Balgurusamy</p>
-                            <p>Categories:new</p>
-                            <div class="row ">
-
-                                <a href="" class="btn btn-success btn-sm ml-5">view Details</a>
-                                <a href="" class="btn btn-danger btn-sm ml-1">@99</a>
-                            </div>
-                        </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img alt="" src="book/book1.jpg" style="width:150px;height: 200px; "/>
-                            <p>Java Programming</p>
-                            <p>Balgurusamy</p>
-                            <p>Categories:new</p>
-                            <div class="row ">
-                                <a href="" class="btn btn-success btn-sm ml-5">view Details</a>
-                                <a href="" class="btn btn-danger btn-sm ml-1">@99</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img alt="" src="book/book1.jpg" style="width:150px;height: 200px; "/>
-                            <p>Java Programming</p>
-                            <p>Balgurusamy</p>
-                            <p>Categories:new</p>
-                            <div class="row ">
-                                <a href="" class="btn btn-success btn-sm ml-5">view Details</a>
-                                <a href="" class="btn btn-danger btn-sm ml-1">@99</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img alt="" src="book/book1.jpg" style="width:150px;height: 200px; "/>
-                            <p>Java Programming</p>
-                            <p>Balgurusamy</p>
-                            <p>Categories:new</p>
-                            <div class="row ">
-                                <a href="" class="btn btn-success btn-sm ml-5">view Details</a>
-                                <a href="" class="btn btn-danger btn-sm ml-1">@99</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                </ui:repeat>
             </div>
             <div class="text-center mt-3 mb-4">
-                <a href=""  class="btn btn-danger text-white"> View All</a>
+                <a href="all_new_book.xhtml"  class="btn btn-danger text-white"> View All</a>
+            </div>
+          
+            <!--New book end -->
+            <!--view all end here-->
+        </div>
+        <hr/>
+
+        <!--Old book start -->
+        <div class="container" >
+            <h3 class="text-center m-4">Old Book</h3>
+           <div class="row">
+                <ui:repeat value="#{bookDAO.oldBooks()}" var="book" class="table table-striped table-hover table-bordered" >
+                    <div class="col-md-3">
+                        <div class="card crd-ho">
+                            <div class="card-body text-center">
+                                <h:graphicImage style="width:100px;height: 150px; " class="img" url="#{book.img}"/>
+                                <p>#{book.bookName}</p>
+                                <p>#{book.author}</p>
+                                <p>Category: #{book.bookCategory}</p> 
+                                <div class="row " id="show">
+                                  
+                                    <a href="view_books.xhtml?id=#{book.id}" class="btn btn-success btn-sm ml-5">view Details</a>
+                                    <a href="" class="btn btn-danger btn-sm ml-1">#{book.price}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ui:repeat>
+            </div>
+
+            <div class="text-center mt-3 mb-4">
+                <a href="all_old_book.xhtml"  class="btn btn-danger text-white"> View All</a>
             </div>
         </div>
         <!--        footer start-->
